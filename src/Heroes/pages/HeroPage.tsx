@@ -22,10 +22,10 @@ export const HeroPage = () => {
   }
 
   return (
-    <div className="row mt-5">
+    <div className="row mt-5 animate__animated animate__fadeInRight">
       <div className="col-4">
         <img
-          className="img-thumbnail"
+          className="img-thumbnail animate__animated animate__fadeIn animate__delay-1s"
           src={`../../../assets/heroes/${id}.jpg`}
           alt={hero.superhero}
         />
@@ -53,7 +53,7 @@ export const HeroPage = () => {
           </>
         )}
 
-        <button onClick={onGoBack} className="btn btn-outline-info mt-5">
+        <button onClick={onGoBack} className="btn btn-info mt-5">
           Go back
         </button>
       </div>

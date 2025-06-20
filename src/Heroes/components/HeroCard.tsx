@@ -6,7 +6,7 @@ export const HeroCard = (hero: Hero) => {
   const heroImgUrl = `../../../assets/heroes/${hero.id}.jpg`;
 
   return (
-    <div className="col">
+    <div className="col animate__animated animate__zoomIn">
       <div className="card">
         <div className="row no-gutters">
           <div className="col-4">
@@ -22,7 +22,7 @@ export const HeroCard = (hero: Hero) => {
               <p className="card-text"> {hero.alter_ego}</p>
               <p className="card-text">{filterCharacters(hero)}</p>
               <p className="card-text">
-                {/* <small className="text-muted">{hero.first_appearance}</small> */}
+                <small className="text-muted">{hero.first_appearance}</small>
               </p>
               <Link to={`/hero/${hero.id}`}>Mas...</Link>
             </div>
