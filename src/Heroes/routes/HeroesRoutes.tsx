@@ -2,8 +2,9 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { DC, HeroPage, Marvel, Search } from "../pages";
 import { Login } from "../../Auth/pages";
 import { Navbar } from "../../ui/components";
+import type { JSX } from "react";
 
-export const HeroesRoutes = () => {
+export const HeroesRoutes = (): JSX.Element => {
   return (
     <>
       <Navbar />

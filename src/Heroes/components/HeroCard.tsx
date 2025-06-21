@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { filterCharacters } from "../helpers";
 import type { Hero } from "../interfaces/Hero";
+import type { JSX } from "react";
 
-export const HeroCard = (hero: Hero) => {
+export const HeroCard = (hero: Hero): JSX.Element => {
   const heroImgUrl = `../../../assets/heroes/${hero.id}.jpg`;
 
   return (

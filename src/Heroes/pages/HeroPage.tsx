@@ -1,9 +1,9 @@
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { filterCharacters, getHeroesById } from "../helpers";
 import type { Hero } from "../interfaces/Hero";
-import { useMemo } from "react";
+import { useMemo, type JSX } from "react";
 
-export const HeroPage = () => {
+export const HeroPage = (): JSX.Element => {
   const { id } = useParams();
   const navigate = useNavigate();
 
