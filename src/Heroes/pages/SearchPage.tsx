@@ -1,21 +1,19 @@
-import type { JSX } from "react";
-import { useForm } from "../../hooks";
-import { HeroCard } from "../components";
-import { heroes } from "../data/Heroes";
-import type { Hero } from "../interfaces/Hero";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { type JSX } from "react";
+import { SearchList } from "../components";
+import { useForm, useSearch } from "../../hooks";
 
 export const Search = (): JSX.Element => {
-  const { formState, onInputChange } = useForm<string>("");
   const navigate = useNavigate();
-  const location = useLocation();
+  const { query, heros } = useSearch();
+  const { formState, onInputChange, onResetForm } = useForm<string>(query);
 
-  const filteredHeros = (name: string): Hero =>
-    heroes.filter((hero) => hero.superhero === name)[0];
+  const showMessage = query.length === 0;
+  const showError = query.length > 0 && heros.length === 0;
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    if (formState.trim().length < 1) return;
+    if (formState.trim().length < 1) onResetForm();
 
     navigate(`?q=${formState.toLocaleLowerCase().trim()}`);
   };
@@ -30,7 +28,7 @@ export const Search = (): JSX.Element => {
           <hr />
           <form onSubmit={onSubmit}>
             <input
-              type=""
+              type="text"
               placeholder="Search for a hero"
               value={formState}
               onChange={(event) => onInputChange(event.target.value)}
@@ -41,17 +39,12 @@ export const Search = (): JSX.Element => {
             <button className="btn btn-primary mt-3 ">Search</button>
           </form>
         </div>
-        <div className="col-7">
-          <h4>Results:</h4>
-          <hr />
-          <div>
-            {filteredHeros(formState) ? (
-              <HeroCard {...filteredHeros(formState)} />
-            ) : (
-              <div className="alert alert-danger">There's no results</div>
-            )}
-          </div>
-        </div>
+        <SearchList
+          heros={heros}
+          query={query}
+          showError={showError}
+          showMessage={showMessage}
+        />
       </div>
     </>
   );
