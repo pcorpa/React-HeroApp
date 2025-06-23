@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { type JSX } from "react";
 import { SearchList } from "../components";
-import { useForm, useSearch } from "../../hooks";
+import { useForm, useSearch } from "../hooks";
 
 export const Search = (): JSX.Element => {
   const navigate = useNavigate();
