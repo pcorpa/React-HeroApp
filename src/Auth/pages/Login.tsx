@@ -1,10 +1,11 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context";
+
+import { useAuth } from "../Hooks";
 
 export const Login = () => {
   const navigate = useNavigate();
-  const { login, authState } = useContext(AuthContext);
+  const { login } = useAuth();
+
   const onLogin = () => {
     login({
       name: "Marcelo",
@@ -12,10 +13,21 @@ export const Login = () => {
       password: "123456",
       username: "userChorola",
     });
+    localStorage.setItem(
+      "initialState",
+      JSON.stringify({
+        logged: true,
+        user: {
+          name: "Marcelo",
+          lastName: "Chorola",
+          password: "123456",
+          username: "userChorola",
+        },
+      })
+    );
     navigate("/", { replace: true });
   };
 
-  console.log(authState);
   return (
     <div className="container mt- 5">
       <h1 className="color: green">Login Page</h1>
