@@ -9,6 +9,7 @@ export const Navbar = (): JSX.Element => {
   const onLogOut = (): void => {
     navigate("login", { replace: true });
     logout();
+    localStorage.removeItem("initialState");
   };
 
   return (
