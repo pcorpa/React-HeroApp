@@ -8,8 +8,8 @@ export const Login = () => {
 
   const onLogin = () => {
     login({
-      name: "Marcelo",
-      lastName: "Chorola",
+      name: "Pedro",
+      lastName: "Correia",
       password: "123456",
       username: "userChorola",
     });
