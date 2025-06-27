@@ -4,10 +4,11 @@ import type { Hero } from "../interfaces/Hero";
 import type { JSX } from "react";
 
 export const HeroCard = (hero: Hero): JSX.Element => {
-  const heroImgUrl = `../../../assets/heroes/${hero.id}.jpg`;
+  // const heroImgUrl = `../../../assets/heroes/${hero.id}.jpg`;
+  const heroImgUrl = `../public/heroes/${hero.id}.jpg`;
 
   return (
-    <div className="col mt-2 animate__animated animate__zoomIn">
+    <div className="col mt-2 mb-4 animate__animated animate__zoomIn">
       <div className="card">
         <div className="row no-gutters">
           <div className="col-4">
